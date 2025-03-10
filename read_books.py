@@ -1,32 +1,29 @@
-# Open and Read a File (Session 9&10 - Files)
 def read_file(filename):
     try:
-        with open(filename, "r", encoding="utf-8") as file:  # Using with open() (Session 11&12 - Best Practices)
+        with open(filename, "r", encoding="utf-8") as file:  # Using with open()
             text = file.read()
         return text
-    except FileNotFoundError:  # Handling file errors (Session 5&6 - Exception Handling)
+    except FileNotFoundError:  # Handling file errors
         print(f"Error: File '{filename}' not found.")
         return ""
 
-
-# Process Text to Find Unique Words Using a Dictionary (Session 11&12 - Dictionaries)
 def count_unique_words(text):
-    text = text.lower()  # Convert text to lowercase (Session 7&8 - String Methods)
-    punctuation = ".,!?;:()[]{}\"'“”"  # Define characters to remove (Session 7&8 - String Operations)
+    text = text.lower()  # Convert text to lowercase
+    punctuation = ".,!?;:()[]{}\"'“”"  # Define characters to remove
 
     for p in punctuation:
         text = text.replace(p, " ")  # Remove punctuation
 
-    words = text.split()  # Split text into words (Session 7&8 - String Methods)
+    words = text.split()  # Split text into words
 
-    word_dict = {}  # Using dictionary to track words (Session 11&12 - Dictionaries)
+    word_dict = {}  # Using dictionary to track words
     for word in words:
         word_dict[word] = word_dict.get(word, 0) + 1  # Counting words efficiently
 
-    return len(word_dict)  # Number of unique words (length of dictionary)
+    return len(word_dict)  # Number of unique words
 
 
-# Compare Two Books Using Tuples (Session 11&12 - Tuples)
+# Compare Two Books Using Tuples
 def compare_books(file1, file2):
     text1 = read_file(file1)
     text2 = read_file(file2)
@@ -37,10 +34,10 @@ def compare_books(file1, file2):
     print(f"Unique words in {file1}: {unique_count1}")
     print(f"Unique words in {file2}: {unique_count2}")
 
-    # Store results in tuples (Session 11&12 - Tuples)
+    # Store results in tuples
     result = (file1, unique_count1), (file2, unique_count2)
 
-    # Compare the books (Session 5&6 - Conditional Execution)
+    # Compare the books
     if unique_count1 > unique_count2:
         print(f"{result[0][0]} has more unique words!")
     elif unique_count2 > unique_count1:
@@ -48,8 +45,7 @@ def compare_books(file1, file2):
     else:
         print("Both books have the same number of unique words.")
 
-
-# Example usage (Replace with actual book file names)
+# Example usage
 book1 = "Frankenstein.txt"
 book2 = "Wonderland.txt"
 
